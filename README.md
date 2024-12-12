@@ -1,0 +1,2 @@
+# Scrib
+Daily Journaling Application
