@@ -24,6 +24,16 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button onClick={async () => {
+        console.log(await window.electron.readDiaryFile('test-file1'))
+        }}>
+        Read Diary File
+      </button>
+      <button onClick={async () => {
+        console.log(await window.electron.writeDiaryFile('test-file1', 'hello new files'))
+        }}>
+        Write Diary File
+      </button>
     </>
   )
 }

@@ -1,7 +1,12 @@
-const electron = require('electron');
+// const electron = require('electron');
+const { contextBridge, ipcRenderer } = require('electron')
 
-electron.contextBridge.exposeInMainWorld("electron", {
-  // things UI can use.
-  // In the app, say window.electron.{function_name}
+contextBridge.exposeInMainWorld("electron", {
   getStaticData: () => console.log('static'),
-})
+  readDiaryFile: (fileName: string) => {
+    return ipcRenderer.invoke('read-diary-file', fileName);
+  },
+  writeDiaryFile: (fileName: string, content: string) => {
+    return ipcRenderer.invoke('write-diary-file', fileName, content);
+  }
+});
