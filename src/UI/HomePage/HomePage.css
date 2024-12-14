@@ -1,7 +1,6 @@
 :root {
   --initialNavWidth: 24%;
 }
-
 #NavigationBox {
   position: fixed;
   left: 0;
@@ -16,10 +15,14 @@
   color: black;
 }
 
+.unselectable {
+  user-select: none;
+}
+
 #Resizer {
   width: 8px;
   height: 100vh;
-  left: var(--initialNavWidth);
+  left: calc(var(--initialNavWidth) - 8px);
   background-color: #656770;
   cursor: ew-resize;
   position: fixed;
@@ -36,7 +39,7 @@
   min-width: 60px;
   background-color: #ffffff;
   color: grey;
-  overflow: hidden;
+  overflow-y: auto; /* Enable vertical scrolling */
   display: flex;
   flex-direction: column;
 }

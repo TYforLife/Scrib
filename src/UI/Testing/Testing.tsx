@@ -1,7 +1,7 @@
 import { useEffect, useState, Suspense, lazy } from 'react'
 import AllDiariesSkeleton from '../DiariesPage/AllDiariesSkeleton';
 import DiaryPage from '../WrittingPage/DiaryPage';
-import '../App.css'
+import '../index.css'
 
 const AllDiaries = lazy(() => import('../DiariesPage/AllDiaries'));
 

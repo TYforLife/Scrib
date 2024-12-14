@@ -11,14 +11,7 @@ const HomePage: React.FC = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const rightBoxRef = useRef<HTMLDivElement>(null);
   const resizerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Make height of resizerRef to full height;
-    if (resizerRef.current) {
-      resizerRef.current.style.height = `${document.documentElement.scrollHeight}px`;
-    }
-  }, [])
-
+  
   useEffect(() => {
     interface MouseMoveEvent extends MouseEvent {
       clientX: number;
@@ -26,24 +19,26 @@ const HomePage: React.FC = () => {
 
     const handleMouseMove = (e: MouseMoveEvent) => {
       if (isResizing) {
-      const newWidth = e.clientX;
-      const percentage = newWidth / window.innerWidth * 100;
-      if (newWidth >= 60 && newWidth <= window.innerWidth - 60) {
-        if (navRef.current) {
-        navRef.current.style.width = `${percentage}%`;
+        const newWidth = e.clientX;
+        const resizerWidth = resizerRef.current ? resizerRef.current.offsetWidth : 0;
+        const percentage = newWidth / window.innerWidth * 100;
+        if (newWidth >= 60 && newWidth <= window.innerWidth - 60) {
+          if (navRef.current) {
+            navRef.current.style.width = `calc(${percentage}% - ${resizerWidth}px)`;
+          }
+          if (rightBoxRef.current) {
+            rightBoxRef.current.style.width = `${100 - percentage}%`;
+          }
+          if (resizerRef.current) {
+            resizerRef.current.style.left = `calc(${percentage}% - ${resizerRef.current.offsetWidth}px)`;
+          }
         }
-        if (rightBoxRef.current) {
-        rightBoxRef.current.style.width = `${100 - percentage}%`;
-        }
-        if (resizerRef.current) {
-        resizerRef.current.style.left = `${percentage}%`;
-        }
-      }
       }
     };
 
     const handleMouseUp = () => {
       setIsResizing(false);
+      document.body.classList.remove('unselectable');
     };
 
     document.addEventListener('mousemove', handleMouseMove);
@@ -55,6 +50,11 @@ const HomePage: React.FC = () => {
     };
   }, [isResizing]);
 
+  const handleMouseDown = () => {
+    setIsResizing(true);
+    document.body.classList.add('unselectable');
+  };
+
   return (
     <div id={'worldBox'} style={{ width: '100%', height: 'auto' }}>
       <div id="NavigationBox" ref={navRef}>
@@ -63,10 +63,11 @@ const HomePage: React.FC = () => {
       <div
         id="Resizer"
         ref={resizerRef}
-        onMouseDown={() => setIsResizing(true)}
+        onMouseDown={handleMouseDown}
       />
       <div id="RightBox" ref={rightBoxRef}>
         Right Box Content
+        <Testing />
         <Testing />
       </div>
     </div>
