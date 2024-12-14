@@ -5,9 +5,9 @@ import '../App.css'
 
 const AllDiaries = lazy(() => import('../DiariesPage/AllDiaries'));
 
-function Testing() {
+const Testing: React.FC = () => {
   const [currDate, setCurrDate] = useState(Date.now())
-  const [displayedDate, setDisplayedDate] = useState(null)
+  const [displayedDate, setDisplayedDate] = useState<Date | null>(null)
 
   useEffect(() => {
     setDisplayedDate(new Date(Date.now()))

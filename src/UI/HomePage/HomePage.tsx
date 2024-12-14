@@ -2,36 +2,43 @@ import { useState, useRef, useEffect } from 'react';
 import './HomePage.css';
 import Testing from '../Testing/Testing'
 
-//////// FUNCTIONS /////////////
-
-function hasVerticalScrollbar() {
-  return document.documentElement.scrollHeight > document.documentElement.clientHeight;
-}
 
 
 /////////// NAVIGATION BAR /////////////////
 
-const NavigationBar = () => {
+const HomePage: React.FC = () => {
   const [isResizing, setIsResizing] = useState(false);
-  const navRef = useRef(null);
-  const rightBoxRef = useRef(null);
-  const resizerRef = useRef(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const rightBoxRef = useRef<HTMLDivElement>(null);
+  const resizerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Make height of resizerRef to full height;
-    resizerRef.current.style.height = `${document.documentElement.scrollHeight}px`;
+    if (resizerRef.current) {
+      resizerRef.current.style.height = `${document.documentElement.scrollHeight}px`;
+    }
   }, [])
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    interface MouseMoveEvent extends MouseEvent {
+      clientX: number;
+    }
+
+    const handleMouseMove = (e: MouseMoveEvent) => {
       if (isResizing) {
-        const newWidth = e.clientX;
-        const percentage = newWidth / window.innerWidth * 100
-        if (newWidth >= 60 && newWidth <= window.innerWidth - 60) {
-          navRef.current.style.width = `${percentage}%`
-          rightBoxRef.current.style.width = `${100 - percentage}%`
-          resizerRef.current.style.left = `${percentage}%`;
+      const newWidth = e.clientX;
+      const percentage = newWidth / window.innerWidth * 100;
+      if (newWidth >= 60 && newWidth <= window.innerWidth - 60) {
+        if (navRef.current) {
+        navRef.current.style.width = `${percentage}%`;
         }
+        if (rightBoxRef.current) {
+        rightBoxRef.current.style.width = `${100 - percentage}%`;
+        }
+        if (resizerRef.current) {
+        resizerRef.current.style.left = `${percentage}%`;
+        }
+      }
       }
     };
 
@@ -66,4 +73,4 @@ const NavigationBar = () => {
   );
 };
 
-export default NavigationBar;
+export default HomePage;
