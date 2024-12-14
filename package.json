@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "scrib": "file:"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

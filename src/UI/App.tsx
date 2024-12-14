@@ -1,39 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect, useState, Suspense, lazy } from 'react'
+import AllDiariesSkeleton from './DiariesPage/AllDiariesSkeleton.tsx';
 import './App.css'
+import DiaryPage from './WrittingPage/DiaryPage'
+const AllDiaries = lazy(() => import('./DiariesPage/AllDiaries'));
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currDate, setCurrDate] = useState(Date.now())
+  const [displayedDate, setDisplayedDate] = useState<Date | null>(null)
+
+  useEffect(() => {
+    setDisplayedDate(new Date(Date.now()))
+  }, [])
 
   return (
     <>
+      <h1>Testing Setting Texts</h1>
+      <DiaryPage currDate={currDate} />
       <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          {displayedDate ? displayedDate.toDateString() : 'None'}
         </p>
+        <button onClick={() => {
+          const date = new Date(currDate);
+          date.setDate(date.getDate() + 1);
+          setCurrDate(date.getTime());
+          setDisplayedDate(date)
+        }}>
+          Add Day
+        </button>
+        <button onClick={() => {
+          const date = new Date(currDate);
+          date.setMonth(date.getMonth() + 1);
+          setCurrDate(date.getTime());
+          setDisplayedDate(date)
+        }}>
+          Add Month
+        </button>
+        <button onClick={() => {
+          const date = new Date(currDate);
+          date.setFullYear(date.getFullYear() + 1);
+          setCurrDate(date.getTime());
+          setDisplayedDate(date)
+        }}>
+          Add Year
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <button onClick={async () => {
-        console.log(await window.electron.readDiaryFile('test-file1'))
-        }}>
-        Read Diary File
-      </button>
-      <button onClick={async () => {
-        console.log(await window.electron.writeDiaryFile('test-file1', 'hello new files'))
-        }}>
-        Write Diary File
-      </button>
+      
+      <Suspense fallback={<AllDiariesSkeleton />}>
+        <AllDiaries />
+      </Suspense>
     </>
   )
 }
