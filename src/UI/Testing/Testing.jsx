@@ -1,23 +1,21 @@
-// import { useEffect, useState, Suspense, lazy } from 'react'
-// import AllDiariesSkeleton from './DiariesPage/AllDiariesSkeleton';
-// import './App.css';
-import HomePage from './HomePage/HomePage';
-// import DiaryPage from './WrittingPage/DiaryPage';
+import { useEffect, useState, Suspense, lazy } from 'react'
+import AllDiariesSkeleton from '../DiariesPage/AllDiariesSkeleton';
+import DiaryPage from '../WrittingPage/DiaryPage';
+import '../App.css'
 
-// const AllDiaries = lazy(() => import('./DiariesPage/AllDiaries'));
+const AllDiaries = lazy(() => import('../DiariesPage/AllDiaries'));
 
-function App() {
-  // const [currDate, setCurrDate] = useState(Date.now())
-  // const [displayedDate, setDisplayedDate] = useState<Date | null>(null)
+function Testing() {
+  const [currDate, setCurrDate] = useState(Date.now())
+  const [displayedDate, setDisplayedDate] = useState(null)
 
-  // useEffect(() => {
-  //   setDisplayedDate(new Date(Date.now()))
-  // }, [])
+  useEffect(() => {
+    setDisplayedDate(new Date(Date.now()))
+  }, [])
 
   return (
-    <>
-      <HomePage />
-      {/* <h1>Testing Setting Texts</h1>
+    <div id={'TestingComponent'}>
+      <h1>Testing Setting Texts</h1>
       <DiaryPage currDate={currDate} />
       <div>
         <p>
@@ -51,9 +49,9 @@ function App() {
       
       <Suspense fallback={<AllDiariesSkeleton />}>
         <AllDiaries />
-      </Suspense> */}
-    </>
+      </Suspense>
+    </div>
   )
 }
 
-export default App
+export default Testing

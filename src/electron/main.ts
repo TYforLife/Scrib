@@ -4,8 +4,10 @@ import { isDev } from './util.js'
 import { getPreloadPath } from './pathResolver.js';
 import './ipcHandlers.js'
 
-app.on("ready", ()=> {
+app.on("ready", () => {
   const mainWindow = new BrowserWindow({
+    width: 1280,
+    height: 800,
     webPreferences: {
       preload: getPreloadPath(),
       contextIsolation: true,

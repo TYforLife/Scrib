@@ -1,0 +1,42 @@
+:root {
+  --initialNavWidth: 24%;
+}
+
+#NavigationBox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--initialNavWidth);
+  min-width: 60px;
+  background-color: #e3e5f3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+#Resizer {
+  width: 8px;
+  height: 100vh;
+  left: var(--initialNavWidth);
+  background-color: #656770;
+  cursor: ew-resize;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+#RightBox {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: calc(100% - var(--initialNavWidth));
+  min-width: 60px;
+  background-color: #ffffff;
+  color: grey;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
