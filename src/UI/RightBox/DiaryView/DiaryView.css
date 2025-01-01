@@ -1,0 +1,40 @@
+#diaryViewWorld {
+  width: 100%;
+  height: auto;
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+}
+
+#singleDiaryWorld {
+  margin-left: 5%;
+  margin-top: 5%;
+  width: 90%;
+  height: auto;
+  max-height: 80vh;
+  border: 1px solid green;
+  box-sizing: border-box;
+  padding: 0 2em 0 2em;
+  overflow: auto; /* Enable scrolling for overflow content */
+}
+
+/* Custom scrollbar for WebKit browsers */
+#singleDiaryWorld::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+#singleDiaryWorld::-webkit-scrollbar-track {
+  background: transparent; /* Background of the scrollbar track */
+}
+
+#singleDiaryWorld::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+#singleDiaryWorld h3, h1 {
+  margin-top: 0;
+}
+
+#singleDiaryWorld h1,h3,p {
+    white-space: pre-wrap;
+}

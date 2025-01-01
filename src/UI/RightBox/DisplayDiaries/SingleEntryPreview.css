@@ -1,0 +1,50 @@
+#singleDiaryEntry {
+  width: calc(95%); /* Adjust width to account for margin */
+  max-width: 100%; /* Ensure it doesn't overflow */
+  height: 5em;
+  display: flex;
+  flex-direction: row; /* Align items from left to right */
+  justify-content: space-between; /* Evenly space out the items */
+  align-items: center;
+  background-color: white;
+  margin: 0.5em;
+
+  border: 0.3em solid gray;
+  /* border-radius: 2.9em; Make the ends circular */
+  padding: 0.3em;
+  /* padding-left: 2.9; */
+  
+
+}
+
+#dateBox {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: rgb(41, 33, 156);
+  color: white;
+  font-weight: 900;
+  display: flex; /* Use Flexbox */
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center;
+}
+
+.day {
+  font-size: 1em; /* Original size */
+}
+
+.monthYear {
+  font-size: 0.5em; /* Smaller size */
+}
+
+#contentPreview {
+  color: black;
+  font-weight: 900;
+  text-align: left; /* Align text to the left */
+  flex: 1;
+  padding-left: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

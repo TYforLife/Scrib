@@ -1,6 +1,6 @@
 {
   "appId": "com.YunyT.Scrib",
-  "files": ["dist-electron", "dist-react"],
+  "files": ["dist-electron", "dist-react", "!node_modules"],
   "icon": "./houseIcon.png",
   "extraResources": ["dist-electron/preload.cjs"],
   "mac": {

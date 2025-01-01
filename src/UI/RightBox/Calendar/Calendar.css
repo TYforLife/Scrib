@@ -1,0 +1,113 @@
+#calendarWorld {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* border: 3px solid red; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+#calendarWorld h1 {
+  margin: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+
+#calendarBox{
+  border: 2px solid green;
+  box-sizing: border-box;
+  width: 80%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+#calendarBox h3, h5 {
+  margin: 0;
+  padding-top: 1em;
+  font-weight: 900;
+}
+
+#calendarBox h5 {
+  padding-bottom: 1em;
+  padding-top: 0;
+  font-weight: 700;
+}
+
+#calendarDaysBox {
+  width: 100%;
+  height: 50vh;
+  /* border: 3px solid blue; */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(25px, auto);
+  gap: 2px;
+  box-sizing: border-box;
+}
+
+#calendarDayUnit {
+  border: 1px solid blue;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#calendarDayUnit.emptyDay {
+  border: 1px solid transparent;
+}
+
+#calendarDayUnitDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  /* border-radius: 50%; */
+  /* border: 2px solid red; */
+  /* box-sizing: border-box; */
+}
+
+.dayTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  box-sizing: border-box;
+  height: 100%; /* This ensures it takes the full height within the grid cell */
+  /* border-bottom: 1px solid #ccc; Optional: Add a bottom border for separation */
+}
+
+
+#calendarDaysTitle {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(20px, 50px);
+  gap: 2px;
+  box-sizing: border-box;
+  padding-bottom: 1em;
+  /* border-bottom: 1px solid #ccc; Optional: Add a bottom border for separation */
+  min-height: 2em;
+  max-height: 3em;
+}
+
+.isToday {
+  font-weight: 900;
+  border: 1px solid red;
+  border-radius: 1em;
+  box-sizing: border-box;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.isComplete {
+  text-decoration: underline;
+}

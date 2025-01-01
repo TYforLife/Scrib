@@ -1,9 +1,9 @@
 import { useEffect, useState, Suspense, lazy } from 'react'
-import AllDiariesSkeleton from '../DiariesPage/AllDiariesSkeleton';
-import DiaryPage from '../WrittingPage/DiaryPage';
-import '../index.css'
+import AllDiariesSkeleton from '../../DiariesPage/AllDiariesSkeleton';
+import DiaryPage from '../../WrittingPage/DiaryPage';
+import '../../index.css'
 
-const AllDiaries = lazy(() => import('../DiariesPage/AllDiaries'));
+const AllDiaries = lazy(() => import('../../DiariesPage/AllDiaries'));
 
 const Testing: React.FC = () => {
   const [currDate, setCurrDate] = useState(Date.now())

@@ -12,6 +12,7 @@ app.on("ready", () => {
       preload: getPreloadPath(),
       contextIsolation: true,
       nodeIntegration: false, // Prevent direct Node.js access
+      webSecurity: false, // Not a good practice.
     },
   });
 

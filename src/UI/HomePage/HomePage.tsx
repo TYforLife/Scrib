@@ -1,6 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './HomePage.css';
-import Testing from '../Testing/Testing'
+import Testing from '../RightBox/Testing/Testing'
+import DisplayDiaries from '../RightBox/DisplayDiaries/DisplayDiaries';
+import Navigation from '../Navigation/Navigation';
+import DiaryEntry from '../DiaryEntry/DiaryEntry';
+import Setting from '../RightBox/Setting/Setting';
+import Calendar from '../RightBox/Calendar/Calendar';
+import DiaryView from '../RightBox/DiaryView/DiaryView';
 
 
 
@@ -11,7 +18,17 @@ const HomePage: React.FC = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const rightBoxRef = useRef<HTMLDivElement>(null);
   const resizerRef = useRef<HTMLDivElement>(null);
-  
+
+  // useLayoutEffect(() => {
+  //   window.electron.getAppPath().then((appPath: string) => {
+  //     console.log(appPath);
+  //     setBasename(appPath);
+  //     // console.log(location.pathname);  // Check current path
+  //   });
+
+  // }, []);
+
+
   useEffect(() => {
     interface MouseMoveEvent extends MouseEvent {
       clientX: number;
@@ -31,6 +48,9 @@ const HomePage: React.FC = () => {
           }
           if (resizerRef.current) {
             resizerRef.current.style.left = `calc(${percentage}% - ${resizerRef.current.offsetWidth}px)`;
+
+            // Maybe make the resizerRef 'change colour?'
+            resizerRef.current.classList.add('bright');
           }
         }
       }
@@ -39,6 +59,11 @@ const HomePage: React.FC = () => {
     const handleMouseUp = () => {
       setIsResizing(false);
       document.body.classList.remove('unselectable');
+
+      // Remove Color if not resizing
+      if (resizerRef.current) {
+        resizerRef.current.classList.remove('bright');
+      }
     };
 
     document.addEventListener('mousemove', handleMouseMove);
@@ -56,21 +81,24 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div id={'worldBox'} style={{ width: '100%', height: 'auto' }}>
-      <div id="NavigationBox" ref={navRef}>
-        Left Box Content
+    <HashRouter>
+      <div id={'worldBox'} style={{ width: '100%', height: 'auto' }}>
+        <div id="NavigationBox" ref={navRef}>
+          <Navigation />
+        </div>
+        <div id="Resizer" ref={resizerRef} onMouseDown={handleMouseDown} />
+        <div id="RightBox" ref={rightBoxRef}>
+          <Routes>
+            <Route path="/" element={<DiaryEntry />} />
+            <Route path="/Testing" element={<Testing />} />
+            <Route path="/DiaryView" element={<DiaryView />} />
+            <Route path="/Calendar" element={<Calendar />} />
+            <Route path="/AllDiaries" element={<DisplayDiaries />} />
+            <Route path="/Settings" element={<Setting />} />
+          </Routes>
+        </div>
       </div>
-      <div
-        id="Resizer"
-        ref={resizerRef}
-        onMouseDown={handleMouseDown}
-      />
-      <div id="RightBox" ref={rightBoxRef}>
-        Right Box Content
-        <Testing />
-        <Testing />
-      </div>
-    </div>
+    </HashRouter>
   );
 };
 

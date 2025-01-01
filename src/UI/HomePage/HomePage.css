@@ -19,6 +19,11 @@
   user-select: none;
 }
 
+#Resizer.bright {
+  background-color: #060a27;
+}
+
+
 #Resizer {
   width: 8px;
   height: 100vh;
