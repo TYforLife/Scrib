@@ -85,4 +85,4 @@ This project is licensed under the MIT License.
 
 ## ✉️ Contact
 
-Created by Taewon Yun – feel free to [open an issue](https://github.com/your-username/scrib/issues) or [reach out](mailto:taewon.yun@example.com) with feedback.
+Created by Taewon Yun – feel free to [reach out](mailto:him@taewonyun.com) with feedback.
