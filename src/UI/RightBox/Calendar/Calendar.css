@@ -109,5 +109,10 @@
 }
 
 .isComplete {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  border: 1px solid black;
+  border-radius: 1em;
+  box-sizing: border-box;
+  margin-left: 2em;
+  margin-right: 2em;
 }

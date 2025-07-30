@@ -1,50 +1,90 @@
-# React + TypeScript + Vite
+# Scrib
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Scrib** is a minimalist, developer-focused journaling desktop application built with Electron.js and React. It offers a clean, distraction-free writing environment and flexible storage options—ideal for developers who want to capture daily notes, code snippets, and reflections.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Daily Entry Workflow**: Automatically creates a new entry for each day with date-based organization.
+* **Rich Text Editor**: Write in Markdown or plain text, with live preview.
+* **Auto‑Save & Versioning**: Entries are auto‑saved as you type, with simple version history to revert changes.
+* **Themes & Shortcuts**: Light and dark themes, plus configurable keyboard shortcuts for power users.
 
-## Expanding the ESLint configuration
+## 📦 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+* [Electron](https://www.electronjs.org/) for cross-platform desktop packaging
+* [React](https://reactjs.org/) with hooks for UI
+* Node.js `fs` module for file I/O
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## NOTE - If you just want Scrib, you can download it as an .exe file for Windows from the below link
+* [Scrib] (https://taewonyun.com/Scrib) download scrib for windnows
+
+### Prerequisites
+
+* Node.js v14 or later
+* npm or yarn package manager
+
+### Install
+
+1. **Clone the repo**
+
+   ```bash
+   git clone https://github.com/your-username/scrib.git
+   cd scrib
+   ```
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Run in Development
+
+```bash
+npm start
+# or
+yarn start
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+This will launch the app in development mode with hot‑reload enabled.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Build for Production
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run build
+# or
+yarn build
 ```
+
+Built packages will be output to the `dist/` folder for your operating system.
+
+## ⚙️ Configuration
+
+* **Storage Location**
+
+  * Go to **Preferences → Storage** to toggle between internal storage or a custom folder.
+  * When using a custom folder, `.md` files will be generated per entry.
+* **Themes & Shortcuts**
+
+  * Customize in **Preferences → Appearance**.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m "Add my feature"`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
+
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+## ✉️ Contact
+
+Created by Taewon Yun – feel free to [open an issue](https://github.com/your-username/scrib/issues) or [reach out](mailto:taewon.yun@example.com) with feedback.

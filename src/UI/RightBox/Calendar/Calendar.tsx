@@ -66,7 +66,7 @@ const Calendar = () => {
         <div className={'calendarDayUnit'} key={i}>
           <div
             id={'calendarDayUnitDisplay'}
-            className={`${isToday ? 'isToday' : ''} ${isComplete ? 'isComplete' : ''}`}
+            className={`${isToday ? 'isToday' : ''} ${isComplete && !isToday ? 'isComplete' : ''}`}
           >
             {day}
           </div>
